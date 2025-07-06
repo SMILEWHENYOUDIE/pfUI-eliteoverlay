@@ -41,7 +41,7 @@ pfUI:RegisterModule("EliteOverlay", "vanilla:tbc", function ()
     local invert = C.EliteOverlay.position == "right" and 1 or -1
     local unitstr = ( unit.label or "" ) .. ( unit.id or "" )
 
-    local size = unit:GetWidth() / 1.5
+    local size = unit:GetWidth()
     local elite = UnitClassification(unitstr)
 
     unit.dragonTop = unit.dragonTop or unit:CreateTexture(nil, "OVERLAY")
