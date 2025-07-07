@@ -1,6 +1,6 @@
 # pfUI Elite Overlay
 
-An extension for pfUI which adds dragon textures to elite, rare and worldbosses.
+An extension for pfUI which adds dragon textures to (elite, rare and worldbosses) Target & Nameplates.
 
 ![screenshot](https://github.com/SMILEWHENYOUDIE/pfUI-eliteoverlay/blob/master/preview.jpg?raw=true)
 
