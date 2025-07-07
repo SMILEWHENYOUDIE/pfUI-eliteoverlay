@@ -114,6 +114,7 @@ pfUI:RegisterModule("EliteOverlay", "vanilla:tbc", function ()
 
     if C.EliteOverlay.position == "off" or not hasEliteSymbol then
       plate.eliteOverlay:Hide()
+	  
     else
       if string.find(levelText, "B") then -- Boss
         plate.eliteOverlay:SetTexture(addonpath.."\\img\\TOP_NAMEPLATE_"..pos)
@@ -133,7 +134,7 @@ pfUI:RegisterModule("EliteOverlay", "vanilla:tbc", function ()
        plate.eliteOverlay:ClearAllPoints()
 	   plate.eliteOverlay:SetWidth(size)
        plate.eliteOverlay:SetHeight(size)
-       plate.eliteOverlay:SetPoint("TOP"..pos, plate.health, "TOP"..pos, invert == 1 and size * -0.6 or -size * -0.6, size * 0.25)
+       plate.eliteOverlay:SetPoint("TOP"..pos, plate.health, "TOP"..pos, invert == 1 and size * -0.6 or -size * 0.6, size * 0.25)
 	   plate.eliteOverlay:SetParent(plate.health)
        plate.eliteOverlay:Show()
     else
