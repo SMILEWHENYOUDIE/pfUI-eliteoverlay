@@ -100,7 +100,7 @@ pfUI:RegisterModule("EliteOverlay", "vanilla:tbc", function ()
     local hasEliteSymbol = string.find(levelText, "+") or string.find(levelText, "R") or string.find(levelText, "B")
     local pos = string.upper(C.EliteOverlay.position or "RIGHT")
 	
-	local size = plate.health:GetHeight() * 5
+	local size = plate.health:GetHeight() * 2
 
     -- Create or get nameplate overlay texture
     plate.eliteOverlay = plate.eliteOverlay or plate.health:CreateTexture(nil, "OVERLAY")
@@ -110,22 +110,22 @@ pfUI:RegisterModule("EliteOverlay", "vanilla:tbc", function ()
       plate.eliteOverlay:Hide()
     else
       if string.find(levelText, "B") then -- Boss
-        plate.eliteOverlay:SetTexture(addonpath.."\\img\\TOP_GOLD_"..pos)
+        plate.eliteOverlay:SetTexture(addonpath.."\\img\\TOP_NAMEPLATE_"..pos)
         plate.eliteOverlay:SetVertexColor(.85,.15,.15,1)
       elseif string.find(levelText, "R+") then -- Rare Elite
-        plate.eliteOverlay:SetTexture(addonpath.."\\img\\TOP_GOLD_"..pos)
+        plate.eliteOverlay:SetTexture(addonpath.."\\img\\TOP_NAMEPLATE_"..pos)
         plate.eliteOverlay:SetVertexColor(1,1,1,1)
       elseif string.find(levelText, "+") then -- Elite
-        plate.eliteOverlay:SetTexture(addonpath.."\\img\\TOP_GOLD_"..pos)
+        plate.eliteOverlay:SetTexture(addonpath.."\\img\\TOP_NAMEPLATE_"..pos)
         --plate.eliteOverlay:SetVertexColor(.75,.6,0,1)
       elseif string.find(levelText, "R") then -- Rare
-        plate.eliteOverlay:SetTexture(addonpath.."\\img\\TOP_GRAY_"..pos)
+        plate.eliteOverlay:SetTexture(addonpath.."\\img\\TOP_NAMEPLATE_"..pos)
         plate.eliteOverlay:SetVertexColor(.8,.8,.8,1)
       end
 
       if plate.eliteOverlay:GetTexture() then
         plate.eliteOverlay:ClearAllPoints()
-        plate.eliteOverlay:SetPoint("TOP"..pos, plate.health, "TOP"..pos, invert == 1 and size * -0.3 or -size * -0.3, size * 0.385)
+        plate.eliteOverlay:SetPoint("TOP"..pos, plate.health, "TOP"..pos, invert == 1 and size * -0.6 or -size * -0.6, size * 0.25)
         plate.eliteOverlay:SetWidth(size)
         plate.eliteOverlay:SetHeight(size)
         plate.eliteOverlay:Show()
