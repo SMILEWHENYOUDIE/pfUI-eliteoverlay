@@ -56,6 +56,12 @@ pfUI:RegisterModule("EliteOverlay", "vanilla:tbc", function ()
       unit.dragonTop:SetHeight(size)
       unit.dragonTop:SetPoint("TOP"..pos, unit, "TOP"..pos, invert == 1 and size * 0.2 or -size * 0.2, size * 0.385)
       unit.dragonTop:SetParent(unit.hp.bar)
+	  
+	  unit.dragonBottom:ClearAllPoints()
+      unit.dragonBottom:SetWidth(size)
+      unit.dragonBottom:SetHeight(size)
+      unit.dragonBottom:SetPoint("BOTTOM"..pos, unit, "BOTTOM"..pos, invert == 1 and size * 0.2 or -size * 0.2, size * 0.385)
+      unit.dragonBottom:SetParent(unit.hp.bar)
 
       if elite == "worldboss" then
         unit.dragonTop:SetTexture(addonpath.."\\img\\TOP_GOLD_"..pos)
@@ -123,14 +129,15 @@ pfUI:RegisterModule("EliteOverlay", "vanilla:tbc", function ()
         plate.eliteOverlay:SetVertexColor(.8,.8,.8,1)
       end
 
-      if plate.eliteOverlay:GetTexture() then
-        plate.eliteOverlay:ClearAllPoints()
-        plate.eliteOverlay:SetPoint("TOP"..pos, plate.health, "TOP"..pos, invert == 1 and size * -0.6 or -size * -0.6, size * 0.25)
-        plate.eliteOverlay:SetWidth(size)
-        plate.eliteOverlay:SetHeight(size)
-        plate.eliteOverlay:Show()
-      else
-        plate.eliteOverlay:Hide()
+    if plate.eliteOverlay:GetTexture() then
+       plate.eliteOverlay:ClearAllPoints()
+	   plate.eliteOverlay:SetWidth(size)
+       plate.eliteOverlay:SetHeight(size)
+       plate.eliteOverlay:SetPoint("TOP"..pos, plate.health, "TOP"..pos, invert == 1 and size * -0.6 or -size * -0.6, size * 0.25)
+	   plate.eliteOverlay:SetParent(plate.health)
+       plate.eliteOverlay:Show()
+    else
+       plate.eliteOverlay:Hide()
       end
     end
 
