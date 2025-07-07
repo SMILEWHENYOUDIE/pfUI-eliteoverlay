@@ -54,7 +54,7 @@ pfUI:RegisterModule("EliteOverlay", "vanilla:tbc", function ()
       unit.dragonTop:ClearAllPoints()
       unit.dragonTop:SetWidth(size)
       unit.dragonTop:SetHeight(size)
-      unit.dragonTop:SetPoint("TOP"..pos, unit, "TOP"..pos, invert == 1 and 15 or -15, 32)
+      unit.dragonTop:SetPoint("TOP"..pos, unit, "TOP"..pos, invert == 1 and 16 or -16, 32)
       unit.dragonTop:SetParent(unit.hp.bar)
 
       --unit.dragonBottom:ClearAllPoints()
