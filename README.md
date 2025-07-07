@@ -2,7 +2,7 @@
 
 An extension for pfUI which adds dragon textures to elite, rare and worldbosses.
 
-![screenshot](https://raw.githubusercontent.com/shagu/ShaguAddons/master/_img/pfUI-eliteoverlay/screenshot.png)
+![screenshot](https://github.com/SMILEWHENYOUDIE/pfUI-eliteoverlay/blob/master/preview.jpg?raw=true)
 
 ## Installation (Vanilla, 1.12)
 1. Download **[Latest Version](https://github.com/shagu/pfUI-eliteoverlay/archive/master.zip)**
