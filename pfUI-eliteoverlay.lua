@@ -54,14 +54,8 @@ pfUI:RegisterModule("EliteOverlay", "vanilla:tbc", function ()
       unit.dragonTop:ClearAllPoints()
       unit.dragonTop:SetWidth(size)
       unit.dragonTop:SetHeight(size)
-      unit.dragonTop:SetPoint("TOP"..pos, unit, "TOP"..pos, invert == 1 and 16 or -16, 32)
+      unit.dragonTop:SetPoint("TOP"..pos, unit, "TOP"..pos, invert == 1 and size * 0.2 or -size * 0.2, size * 0.385)
       unit.dragonTop:SetParent(unit.hp.bar)
-
-      --unit.dragonBottom:ClearAllPoints()
-      --unit.dragonBottom:SetWidth(size)
-      --unit.dragonBottom:SetHeight(size)
-      --unit.dragonBottom:SetPoint("BOTTOM"..pos, unit, "BOTTOM"..pos, invert*size/5.2, -size/2.98)
-      --unit.dragonBottom:SetParent(unit.hp.bar)
 
       if elite == "worldboss" then
         unit.dragonTop:SetTexture(addonpath.."\\img\\TOP_GOLD_"..pos)
@@ -80,7 +74,6 @@ pfUI:RegisterModule("EliteOverlay", "vanilla:tbc", function ()
       elseif elite == "elite" then
         unit.dragonTop:SetTexture(addonpath.."\\img\\TOP_GOLD_"..pos)
         unit.dragonTop:Show()
-        --unit.dragonTop:SetVertexColor(.75,.6,0,1)
         unit.dragonBottom:SetTexture(addonpath.."\\img\\BOTTOM_GOLD_"..pos)
         unit.dragonBottom:Show()
         unit.dragonBottom:SetVertexColor(.75,.6,0,1)
@@ -98,5 +91,49 @@ pfUI:RegisterModule("EliteOverlay", "vanilla:tbc", function ()
     end
 
     HookRefreshUnit(this, unit, component)
+  end
+
+  -- Nameplate Elite Overlay
+  local HookNameplateUpdate = pfUI.nameplates.OnDataChanged
+  function pfUI.nameplates:OnDataChanged(plate)
+    local levelText = plate.level:GetText() or ""
+    local hasEliteSymbol = string.find(levelText, "+") or string.find(levelText, "R") or string.find(levelText, "B")
+    local pos = string.upper(C.EliteOverlay.position or "RIGHT")
+	
+	local size = plate.health:GetHeight() * 5
+
+    -- Create or get nameplate overlay texture
+    plate.eliteOverlay = plate.eliteOverlay or plate.health:CreateTexture(nil, "OVERLAY")
+    plate.eliteOverlay:SetParent(plate.health)
+
+    if C.EliteOverlay.position == "off" or not hasEliteSymbol then
+      plate.eliteOverlay:Hide()
+    else
+      if string.find(levelText, "B") then -- Boss
+        plate.eliteOverlay:SetTexture(addonpath.."\\img\\TOP_GOLD_"..pos)
+        plate.eliteOverlay:SetVertexColor(.85,.15,.15,1)
+      elseif string.find(levelText, "R+") then -- Rare Elite
+        plate.eliteOverlay:SetTexture(addonpath.."\\img\\TOP_GOLD_"..pos)
+        plate.eliteOverlay:SetVertexColor(1,1,1,1)
+      elseif string.find(levelText, "+") then -- Elite
+        plate.eliteOverlay:SetTexture(addonpath.."\\img\\TOP_GOLD_"..pos)
+        --plate.eliteOverlay:SetVertexColor(.75,.6,0,1)
+      elseif string.find(levelText, "R") then -- Rare
+        plate.eliteOverlay:SetTexture(addonpath.."\\img\\TOP_GRAY_"..pos)
+        plate.eliteOverlay:SetVertexColor(.8,.8,.8,1)
+      end
+
+      if plate.eliteOverlay:GetTexture() then
+        plate.eliteOverlay:ClearAllPoints()
+        plate.eliteOverlay:SetPoint("TOP"..pos, plate.health, "TOP"..pos, invert == 1 and size * -0.3 or -size * -0.3, size * 0.385)
+        plate.eliteOverlay:SetWidth(size)
+        plate.eliteOverlay:SetHeight(size)
+        plate.eliteOverlay:Show()
+      else
+        plate.eliteOverlay:Hide()
+      end
+    end
+
+    HookNameplateUpdate(self, plate)
   end
 end)
