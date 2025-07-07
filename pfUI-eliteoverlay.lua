@@ -41,7 +41,7 @@ pfUI:RegisterModule("EliteOverlay", "vanilla:tbc", function ()
     local invert = C.EliteOverlay.position == "right" and 1 or -1
     local unitstr = ( unit.label or "" ) .. ( unit.id or "" )
 
-    local size = unit:GetWidth()
+    local size = unit:GetHeight() * 3
     local elite = UnitClassification(unitstr)
 
     unit.dragonTop = unit.dragonTop or unit:CreateTexture(nil, "OVERLAY")
@@ -52,9 +52,9 @@ pfUI:RegisterModule("EliteOverlay", "vanilla:tbc", function ()
       unit.dragonBottom:Hide()
     else
       unit.dragonTop:ClearAllPoints()
-      unit.dragonTop:SetWidth(128)
-      unit.dragonTop:SetHeight(128)
-      unit.dragonTop:SetPoint("TOP"..pos, unit, "TOP"..pos, invert == 1 and 20 or -20, 36)
+      unit.dragonTop:SetWidth(size)
+      unit.dragonTop:SetHeight(size)
+      unit.dragonTop:SetPoint("TOP"..pos, unit, "TOP"..pos, invert == 1 and 15 or -15, 32)
       unit.dragonTop:SetParent(unit.hp.bar)
 
       --unit.dragonBottom:ClearAllPoints()
@@ -80,7 +80,7 @@ pfUI:RegisterModule("EliteOverlay", "vanilla:tbc", function ()
       elseif elite == "elite" then
         unit.dragonTop:SetTexture(addonpath.."\\img\\TOP_GOLD_"..pos)
         unit.dragonTop:Show()
-        unit.dragonTop:SetVertexColor(.75,.6,0,1)
+        --unit.dragonTop:SetVertexColor(.75,.6,0,1)
         unit.dragonBottom:SetTexture(addonpath.."\\img\\BOTTOM_GOLD_"..pos)
         unit.dragonBottom:Show()
         unit.dragonBottom:SetVertexColor(.75,.6,0,1)
