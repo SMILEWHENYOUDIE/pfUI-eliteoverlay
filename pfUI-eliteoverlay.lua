@@ -82,7 +82,7 @@ pfUI:RegisterModule("EliteOverlay", "vanilla:tbc", function ()
         unit.dragonTop:Show()
         unit.dragonBottom:SetTexture(addonpath.."\\img\\BOTTOM_GOLD_"..pos)
         unit.dragonBottom:Show()
-        unit.dragonBottom:SetVertexColor(.75,.6,0,1)
+        --unit.dragonBottom:SetVertexColor(.75,.6,0,1)
       elseif elite == "rare" then
         unit.dragonTop:SetTexture(addonpath.."\\img\\TOP_GRAY_"..pos)
         unit.dragonTop:Show()
@@ -117,16 +117,16 @@ pfUI:RegisterModule("EliteOverlay", "vanilla:tbc", function ()
 	  
     else
       if string.find(levelText, "B") then -- Boss
-        plate.eliteOverlay:SetTexture(addonpath.."\\img\\TOP_NAMEPLATE_"..pos)
+        plate.eliteOverlay:SetTexture(addonpath.."\\img\\TOP_NAMEPLATE64_"..pos)
         plate.eliteOverlay:SetVertexColor(.85,.15,.15,1)
       elseif string.find(levelText, "R+") then -- Rare Elite
-        plate.eliteOverlay:SetTexture(addonpath.."\\img\\TOP_NAMEPLATE_"..pos)
+        plate.eliteOverlay:SetTexture(addonpath.."\\img\\TOP_NAMEPLATE64_"..pos)
         plate.eliteOverlay:SetVertexColor(1,1,1,1)
       elseif string.find(levelText, "+") then -- Elite
-        plate.eliteOverlay:SetTexture(addonpath.."\\img\\TOP_NAMEPLATE_"..pos)
+        plate.eliteOverlay:SetTexture(addonpath.."\\img\\TOP_NAMEPLATE64_"..pos)
         --plate.eliteOverlay:SetVertexColor(.75,.6,0,1)
       elseif string.find(levelText, "R") then -- Rare
-        plate.eliteOverlay:SetTexture(addonpath.."\\img\\TOP_NAMEPLATE_"..pos)
+        plate.eliteOverlay:SetTexture(addonpath.."\\img\\TOP_NAMEPLATE64_"..pos)
         plate.eliteOverlay:SetVertexColor(.8,.8,.8,1)
       end
 
