@@ -132,7 +132,7 @@ pfUI:RegisterModule("EliteOverlay", "vanilla:tbc", function ()
 			plate.eliteOverlay:ClearAllPoints()
 			plate.eliteOverlay:SetWidth(size)
 			plate.eliteOverlay:SetHeight(size)
-			plate.eliteOverlay:SetPoint("TOP"..pos, plate.health, "TOP"..pos, invert == 1 and size * 0.3 or size * -0.18, size * 0.37)
+			plate.eliteOverlay:SetPoint("TOP"..pos, plate.health, "TOP"..pos, invert == 1 and size * 0.3 or size * -0.18, size * 0.38)
 			plate.eliteOverlay:SetParent(plate.health)
 			plate.eliteOverlay:Show()
 		else
