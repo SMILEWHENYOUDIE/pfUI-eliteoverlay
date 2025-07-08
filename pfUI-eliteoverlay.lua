@@ -105,7 +105,7 @@ pfUI:RegisterModule("EliteOverlay", "vanilla:tbc", function ()
 	local pos = string.upper(C.EliteOverlay.position or "RIGHT")
 	local invert = C.EliteOverlay.position == "right" and 1 or -1
     local levelText = plate.level:GetText() or ""
-    local hasEliteSymbol = string.find(levelText, "+") or string.find(levelText, "R") or string.find(levelText, "B") or string.find(levelText, "R+")
+    local hasEliteSymbol = string.find(levelText, "+") or string.find(levelText, "R") or string.find(levelText, "B") --or string.find(levelText, "R+")
 	
 	local size = plate.health:GetHeight() * 5
 
@@ -132,7 +132,7 @@ pfUI:RegisterModule("EliteOverlay", "vanilla:tbc", function ()
 			plate.eliteOverlay:ClearAllPoints()
 			plate.eliteOverlay:SetWidth(size)
 			plate.eliteOverlay:SetHeight(size)
-			plate.eliteOverlay:SetPoint("TOP"..pos, plate.health, "TOP"..pos, invert == 1 and size * 0.3 or size * -0.18, size * 0.36)
+			plate.eliteOverlay:SetPoint("TOP"..pos, plate.health, "TOP"..pos, invert == 1 and size * 0.3 or size * -0.18, size * 0.37)
 			plate.eliteOverlay:SetParent(plate.health)
 			plate.eliteOverlay:Show()
 		else
