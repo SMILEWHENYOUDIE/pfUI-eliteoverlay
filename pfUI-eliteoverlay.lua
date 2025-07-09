@@ -32,14 +32,13 @@ pfUI:RegisterModule("EliteOverlay", "vanilla:tbc", function ()
     end)
   end
 
-  pfUI:UpdateConfig("EliteOverlay",       nil,         "position",   "right")
-
+  pfUI:UpdateConfig("EliteOverlay", nil, "position", "right")
 
   local HookRefreshUnit = pfUI.uf.RefreshUnit
   function pfUI.uf:RefreshUnit(unit, component)
     local pos = string.upper(C.EliteOverlay.position)
     local invert = C.EliteOverlay.position == "right" and 1 or -1
-    local unitstr = ( unit.label or "" ) .. ( unit.id or "" )
+    local unitstr = (unit.label or "") .. (unit.id or "")
 
     local size = unit:GetHeight() * 3
     local elite = UnitClassification(unitstr)
@@ -56,8 +55,8 @@ pfUI:RegisterModule("EliteOverlay", "vanilla:tbc", function ()
       unit.dragonTop:SetHeight(size)
       unit.dragonTop:SetPoint("TOP"..pos, unit, "TOP"..pos, invert == 1 and size * 0.2 or -size * 0.2, size * 0.385)
       unit.dragonTop:SetParent(unit.hp.bar)
-	  
-	  unit.dragonBottom:ClearAllPoints()
+      
+      unit.dragonBottom:ClearAllPoints()
       unit.dragonBottom:SetWidth(size)
       unit.dragonBottom:SetHeight(size)
       unit.dragonBottom:SetPoint("BOTTOM"..pos, unit, "BOTTOM"..pos, invert == 1 and size * 0.2 or -size * 0.2, size * 0.385)
@@ -99,47 +98,38 @@ pfUI:RegisterModule("EliteOverlay", "vanilla:tbc", function ()
     HookRefreshUnit(this, unit, component)
   end
 
-  -- Nameplate Elite Overlay
+  -- Nameplates
   local HookNameplateUpdate = pfUI.nameplates.OnDataChanged
   function pfUI.nameplates:OnDataChanged(plate)
-	local pos = string.upper(C.EliteOverlay.position or "RIGHT")
-	local invert = C.EliteOverlay.position == "right" and 1 or -1
-    local levelText = plate.level:GetText() or ""
-    local hasEliteSymbol = string.find(levelText, "R") or string.find(levelText, "R+") or string.find(levelText, "E") or string.find(levelText, "B")
-	
-	local size = plate.health:GetHeight() * 5
+    local levelText = plate.level and plate.level:GetText() or ""
+    local hasEliteSymbol = string.find(levelText, "R") or string.find(levelText, "R%+") or string.find(levelText, "%+") or string.find(levelText, "%?%?B")
+    
+    local size = 16
 
     plate.eliteOverlay = plate.eliteOverlay or plate.health:CreateTexture(nil, "OVERLAY")
 
     if C.EliteOverlay.position == "off" or not hasEliteSymbol then
       plate.eliteOverlay:Hide()
     else
-      if string.find(levelText, "R") then -- Rare
-        plate.eliteOverlay:SetTexture(addonpath.."\\img\\TOP_NAMEPLATE_"..pos)
-        --plate.eliteOverlay:SetVertexColor(.85,.15,.15,1)
-      elseif string.find(levelText, "R+") then -- Rare Elite
-        plate.eliteOverlay:SetTexture(addonpath.."\\img\\TOP_NAMEPLATE_"..pos)
-        --plate.eliteOverlay:SetVertexColor(1,1,1,1)
-      elseif string.find(levelText, "E") then -- Elite
-        plate.eliteOverlay:SetTexture(addonpath.."\\img\\TOP_NAMEPLATE_"..pos)
-        --plate.eliteOverlay:SetVertexColor(.75,.6,0,1)
-      elseif string.find(levelText, "B") then -- Boss
-        plate.eliteOverlay:SetTexture(addonpath.."\\img\\TOP_NAMEPLATE_"..pos)
-        --plate.eliteOverlay:SetVertexColor(.8,.8,.8,1)
+      if string.find(levelText, "R") or        -- Rare
+         string.find(levelText, "R%+") or      -- Rare Elite
+         string.find(levelText, "%+") or       -- Elite
+         string.find(levelText, "%?%?B") then  -- Boss
+        plate.eliteOverlay:SetTexture(addonpath.."\\img\\NAMEPLATE")
       end
 
-		if plate.eliteOverlay:GetTexture() then
-			plate.eliteOverlay:ClearAllPoints()
-			plate.eliteOverlay:SetWidth(size)
-			plate.eliteOverlay:SetHeight(size)
-			plate.eliteOverlay:SetPoint("TOP"..pos, plate.health, "TOP"..pos, invert == 1 and size * 0.3 or size * -0.18, size * 0.38)
-			plate.eliteOverlay:SetParent(plate.health)
-			plate.eliteOverlay:Show()
-		else
-			plate.eliteOverlay:Hide()
-		end
+      if plate.eliteOverlay:GetTexture() then
+        plate.eliteOverlay:ClearAllPoints()
+        plate.eliteOverlay:SetWidth(size)
+        plate.eliteOverlay:SetHeight(size)
+        plate.eliteOverlay:SetPoint("TOPLEFT", plate.health, "TOPLEFT", -24, 16)
+        plate.eliteOverlay:SetParent(plate.health)
+        plate.eliteOverlay:Show()
+      else
+        plate.eliteOverlay:Hide()
+      end
     end
-
+    
     HookNameplateUpdate(self, plate)
   end
 end)
