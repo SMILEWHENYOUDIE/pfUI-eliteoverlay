@@ -9,9 +9,9 @@ pfUI:RegisterModule(
         }
 
         pfUI.gui.dropdowns.EliteOverlayNameplate_positions = {
+			"top:" .. T["Top"],
             "left:" .. T["Left"],
             "right:" .. T["Right"],
-            "top:" .. T["Top"],
             "off:" .. T["Disabled"]
         }
 
@@ -147,7 +147,7 @@ pfUI:RegisterModule(
         -- Nameplates
         local HookRefreshNameplate = pfUI.nameplates.OnDataChanged
         function pfUI.nameplates:OnDataChanged(plate)
-            local pos = string.upper(C.EliteOverlayNameplate.position or "TOP")
+            local pos = string.upper(C.EliteOverlayNameplate.position)
             local levelText = plate.level and plate.level:GetText() or ""
             local hasEliteSymbol =
                 string.find(levelText, "R") or string.find(levelText, "R%+") or string.find(levelText, "%+") or
