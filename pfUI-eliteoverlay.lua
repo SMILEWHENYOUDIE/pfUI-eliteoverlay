@@ -72,33 +72,41 @@ pfUI:RegisterModule("EliteOverlay", "vanilla:tbc", function ()
       unit.dragonBottom:SetParent(unit.hp.bar)
 
       if elite == "worldboss" then
+		unit.dragonTop:SetVertexColor(.85,.15,.15,1)
         unit.dragonTop:SetTexture(addonpath.."\\img\\TOP_GOLD_"..pos)
         unit.dragonTop:Show()
-        unit.dragonTop:SetVertexColor(.85,.15,.15,1)
+		
+		unit.dragonBottom:SetVertexColor(.85,.15,.15,1)
         unit.dragonBottom:SetTexture(addonpath.."\\img\\BOTTOM_GOLD_"..pos)
         unit.dragonBottom:Show()
-        unit.dragonBottom:SetVertexColor(.85,.15,.15,1)
+		
       elseif elite == "rareelite" then
+		unit.dragonTop:SetVertexColor(.8,1,1,1)
         unit.dragonTop:SetTexture(addonpath.."\\img\\TOP_GOLD_"..pos)
         unit.dragonTop:Show()
-        unit.dragonTop:SetVertexColor(1,1,1,1)
+        
+		unit.dragonBottom:SetVertexColor(.8,1,1,1)
         unit.dragonBottom:SetTexture(addonpath.."\\img\\BOTTOM_GOLD_"..pos)
         unit.dragonBottom:Show()
-        unit.dragonBottom:SetVertexColor(1,1,1,1)
+        
       elseif elite == "elite" then
+		unit.dragonTop:SetVertexColor(1,.6,0,1)
         unit.dragonTop:SetTexture(addonpath.."\\img\\TOP_GOLD_"..pos)
         unit.dragonTop:Show()
-        unit.dragonTop:SetVertexColor(.75,.6,0,1)
+        
+		unit.dragonBottom:SetVertexColor(1,.6,0,1)
         unit.dragonBottom:SetTexture(addonpath.."\\img\\BOTTOM_GOLD_"..pos)
         unit.dragonBottom:Show()
-        unit.dragonBottom:SetVertexColor(.75,.6,0,1)
+        
       elseif elite == "rare" then
+		unit.dragonTop:SetVertexColor(.8,.8,.8,1)
         unit.dragonTop:SetTexture(addonpath.."\\img\\TOP_GRAY_"..pos)
         unit.dragonTop:Show()
-        unit.dragonTop:SetVertexColor(.8,.8,.8,1)
+		
+        unit.dragonBottom:SetVertexColor(.8,.8,.8,1)
         unit.dragonBottom:SetTexture(addonpath.."\\img\\BOTTOM_GRAY_"..pos)
         unit.dragonBottom:Show()
-        unit.dragonBottom:SetVertexColor(.8,.8,.8,1)
+        
       else
         unit.dragonTop:Hide()
         unit.dragonBottom:Hide()
@@ -120,8 +128,8 @@ pfUI:RegisterModule("EliteOverlay", "vanilla:tbc", function ()
 	local texture = addonpath .. "\\img\\NAMEPLATE"
 	local presetOffsets = {
 				TOP 	= {	x = 0, 		y = 32	},
-				LEFT 	= {	x = -26,	y = 15	},
-				RIGHT 	= {	x = 26,		y = 0	}
+				LEFT 	= {	x = -25,	y = 13	},
+				RIGHT 	= {	x = 25,		y = 0	}
 						  }
 	
 	local elite
@@ -163,11 +171,11 @@ end
 			plate.EliteOverlayNameplate:SetTexture(texture)
 			plate.EliteOverlayNameplate:Show()
 		  elseif elite == "rareelite" then
-			plate.EliteOverlayNameplate:SetVertexColor(1,1,1,1)
+			plate.EliteOverlayNameplate:SetVertexColor(.8,1,1,1)
 			plate.EliteOverlayNameplate:SetTexture(texture)
 			plate.EliteOverlayNameplate:Show()
 		  elseif elite == "elite" then
-			plate.EliteOverlayNameplate:SetVertexColor(.75,.6,0,1)
+			plate.EliteOverlayNameplate:SetVertexColor(1,.6,0,1)
 			plate.EliteOverlayNameplate:SetTexture(texture)
 			plate.EliteOverlayNameplate:Show()
 		  elseif elite == "rare" then
