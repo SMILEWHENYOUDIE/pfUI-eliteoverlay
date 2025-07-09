@@ -1,8 +1,3 @@
--- pfUI EliteOverlay
--- Adds icons/texture to unit frames and nameplates
--- Version: 1.0 (for Vanilla/TBC)
--- Author: SMILEWHENYOUDIE
-
 pfUI:RegisterModule("EliteOverlay", "vanilla:tbc", function()
   -- =============================================
   -- CONFIGURATION SETTINGS
