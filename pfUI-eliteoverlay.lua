@@ -158,7 +158,7 @@ pfUI:RegisterModule(
 
             -- X, Y Offsets
             local presetOffsets = {
-                TOP 	= {	x = 0, 		y = 35	},
+                TOP 	= {	x = 0, 		y = 32	},
                 LEFT 	= {	x = -26,	y = 15	},
                 RIGHT 	= {	x = 26,		y = 0	}
             }
