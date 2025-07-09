@@ -149,11 +149,11 @@ pfUI:RegisterModule(
         function pfUI.nameplates:OnDataChanged(plate)
             local pos = string.upper(C.EliteOverlayNameplate.position)
             local levelText = plate.level and plate.level:GetText() or ""
-            local hasEliteSymbol =
+            local EliteStatus =
                 string.find(levelText, "R") or string.find(levelText, "R%+") or string.find(levelText, "%+") or
                 string.find(levelText, "%?%?B")
 
-            local size = 22
+            local size = 18
             local image = addonpath .. "\\img\\NAMEPLATE"
 
             -- X, Y Offsets
@@ -165,7 +165,7 @@ pfUI:RegisterModule(
 
             plate.EliteOverlayNameplate = plate.EliteOverlayNameplate or plate.health:CreateTexture(nil, "OVERLAY")
 
-            if C.EliteOverlayNameplate.position == "off" or not hasEliteSymbol then
+            if C.EliteOverlayNameplate.position == "off" or not EliteStatus then
                 plate.EliteOverlayNameplate:Hide()
             else
                 plate.EliteOverlayNameplate:SetTexture(image)
