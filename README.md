@@ -11,7 +11,7 @@ An extension for pfUI which adds dragon textures to the target frame & skull ico
 4. Copy "pfUI-eliteoverlay" into Wow-Directory\Interface\AddOns
 5. Restart Wow
 
-##Installation (The Burning Crusade, 2.4.3) [not tested with my modifications]
+## Installation (The Burning Crusade, 2.4.3) [not tested with my modifications]
 1. Download Latest Version
 2. Unpack the Zip file
 3. Rename the folder "pfUI-eliteoverlay-master" to "pfUI-eliteoverlay-tbc"
