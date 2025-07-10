@@ -166,7 +166,7 @@ pfUI:RegisterModule("EliteOverlay", "vanilla:tbc", function()
     local presetOffsets = {
       TOP = { x = 0, y = 32 },    -- Above the nameplate
       LEFT = { x = -25, y = 13 }, -- Left side
-      RIGHT = { x = 25, y = 0 }   -- Right side
+      RIGHT = { x = 20, y = 0 }   -- Right side
     }
 
     -- Detect elite status from level text
