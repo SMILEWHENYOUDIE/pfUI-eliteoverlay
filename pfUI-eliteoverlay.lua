@@ -160,6 +160,7 @@ pfUI:RegisterModule("EliteOverlay", "vanilla:tbc", function()
     local invert = C.EliteOverlay.position == "right" and 1 or -1
     local levelText = plate.level and plate.level:GetText() or ""  -- e.g., "63+", "??B"
 	local isCasting = plate.castbar and plate.castbar:IsShown()
+	local isRightPosition = C.EliteOverlayNameplate.position == "right"
     local size = 22  -- Fixed size for nameplate icons
     local texture = addonpath .. "\\img\\NAMEPLATE"  -- Shared texture path
 
@@ -186,7 +187,7 @@ pfUI:RegisterModule("EliteOverlay", "vanilla:tbc", function()
     plate.EliteOverlayNameplate = plate.EliteOverlayNameplate or plate.health:CreateTexture(nil, "OVERLAY")
 
     -- Hide if disabled or not elite
-    if C.EliteOverlayNameplate.position == "off" or not elite or isCasting then
+    if C.EliteOverlayNameplate.position == "off" or not elite or (isCasting and isRightPosition) then
       plate.EliteOverlayNameplate:Hide()
     else
       -- Position the nameplate icon
