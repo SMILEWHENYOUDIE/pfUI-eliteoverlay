@@ -125,7 +125,7 @@ pfUI:RegisterModule("EliteOverlay", "vanilla:tbc", function()
         unit.dragonBottom:SetTexture(addonpath .. "\\img\\BOTTOM_GOLD_" .. pos)
         unit.dragonBottom:Show()
       elseif elite == "elite" then        -- Gold dragons for elites
-        unit.dragonTop:SetVertexColor(.8, .6, 0, 1)
+        unit.dragonTop:SetVertexColor(1, 1, 1, 1)
         unit.dragonTop:SetTexture(addonpath .. "\\img\\TOP_GOLD_" .. pos)
         unit.dragonTop:Show()
         unit.dragonBottom:SetVertexColor(1, .6, 0, 1)
@@ -161,14 +161,14 @@ pfUI:RegisterModule("EliteOverlay", "vanilla:tbc", function()
     local levelText = plate.level and plate.level:GetText() or ""  -- e.g., "63+", "??B"
 	local isCasting = plate.castbar and plate.castbar:IsShown()
 	local isRightPosition = C.EliteOverlayNameplate.position == "right"
-    local size = 22  -- Fixed size for nameplate icons
-    local texture = addonpath .. "\\img\\NAMEPLATE"  -- Shared texture path
+    local size = 16  -- Fixed size for nameplate icons
+    local texture = addonpath .. "\\img\\SKULL_GRAY"  -- Shared texture path
 
     -- Predefined offsets for different positions
     local presetOffsets = {
       TOP = { x = 0, y = 32 },    -- Above the nameplate
       LEFT = { x = -25, y = 13 }, -- Left side
-      RIGHT = { x = 14, y = 0 }   -- Right side
+      RIGHT = { x = 10, y = 0 }   -- Right side
     }
 
     -- Detect elite status from level text
@@ -208,11 +208,11 @@ pfUI:RegisterModule("EliteOverlay", "vanilla:tbc", function()
         plate.EliteOverlayNameplate:SetTexture(texture)
         plate.EliteOverlayNameplate:Show()
       elseif elite == "elite" then
-        plate.EliteOverlayNameplate:SetVertexColor(1, .8, 0, 1)  -- Gold
+        plate.EliteOverlayNameplate:SetVertexColor(.9, .7, 0, 1)  -- Gold
         plate.EliteOverlayNameplate:SetTexture(texture)
         plate.EliteOverlayNameplate:Show()
       elseif elite == "rare" then
-        plate.EliteOverlayNameplate:SetVertexColor(.8, .8, .8, 1)  -- Gray
+        plate.EliteOverlayNameplate:SetVertexColor(.8, .8, .8, 1)  -- Darker Gray
         plate.EliteOverlayNameplate:SetTexture(texture)
         plate.EliteOverlayNameplate:Show()
       else
